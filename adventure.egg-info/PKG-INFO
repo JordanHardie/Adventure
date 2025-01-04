@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: adventure
+Version: 0.1
+Requires-Dist: pygame>=2.5.0
+Requires-Dist: noise>=1.2.2
+Requires-Dist: numpy>=1.24.0
+Requires-Dist: scipy>=1.10.0

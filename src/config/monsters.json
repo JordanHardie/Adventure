@@ -1,0 +1,80 @@
+{
+    "monsters": {
+      "Slime": {
+        "biomes": ["grassland", "forest", "swamp"],
+        "rarity": {
+          "base_rate": 0.25,
+          "min_distance": 0
+        },
+        "base_stats": {
+          "strength": 3,
+          "defence": 2,
+          "health": 5,
+          "speed": 2,
+          "stamina": 10,
+          "dexterity": 1,
+          "magic_power": 1,
+          "magic_defence": 1,
+          "wisdom": 1,
+          "intelligence": 1
+        }
+      },
+      "Wolf": {
+        "biomes": ["forest", "taiga", "grassland"],
+        "rarity": {
+          "base_rate": 0.15,
+          "min_distance": 50
+        },
+        "base_stats": {
+          "strength": 6,
+          "defence": 4,
+          "health": 20,
+          "speed": 8,
+          "stamina": 15,
+          "dexterity": 6,
+          "magic_power": 1,
+          "magic_defence": 2,
+          "wisdom": 2,
+          "intelligence": 3
+        }
+      },
+      "Ice Elemental": {
+        "biomes": ["tundra", "snowy_peaks"],
+        "rarity": {
+          "base_rate": 0.05,
+          "min_distance": 300
+        },
+        "base_stats": {
+          "strength": 5,
+          "defence": 6,
+          "health": 25,
+          "speed": 4,
+          "stamina": 20,
+          "dexterity": 3,
+          "magic_power": 8,
+          "magic_defence": 8,
+          "wisdom": 5,
+          "intelligence": 5
+        }
+      },
+      "Dragon": {
+        "biomes": ["mountain", "volcanic", "snowy_peaks"],
+        "rarity": {
+          "base_rate": 0.01,
+          "min_distance": 500
+        },
+        "base_stats": {
+          "strength": 15,
+          "defence": 12,
+          "health": 50,
+          "speed": 8,
+          "stamina": 30,
+          "dexterity": 7,
+          "magic_power": 12,
+          "magic_defence": 10,
+          "wisdom": 8,
+          "intelligence": 8
+        }
+      }
+    }
+  }
