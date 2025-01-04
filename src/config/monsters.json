@@ -1,80 +1,403 @@
 {
     "monsters": {
-      "Slime": {
-        "biomes": ["grassland", "forest", "swamp"],
-        "rarity": {
-          "base_rate": 0.25,
-          "min_distance": 0
+        "Slime": {
+            "biomes": [ "grassland", "forest", "swamp" ],
+            "rarity": {
+                "base_rate": 0.25,
+                "min_distance": 0
+            },
+            "base_stats": {
+                "strength": 3,
+                "defence": 2,
+                "health": 5,
+                "speed": 2,
+                "stamina": 10,
+                "dexterity": 1,
+                "magic_power": 1,
+                "magic_defence": 1,
+                "wisdom": 1,
+                "intelligence": 1
+            }
         },
-        "base_stats": {
-          "strength": 3,
-          "defence": 2,
-          "health": 5,
-          "speed": 2,
-          "stamina": 10,
-          "dexterity": 1,
-          "magic_power": 1,
-          "magic_defence": 1,
-          "wisdom": 1,
-          "intelligence": 1
-        }
-      },
-      "Wolf": {
-        "biomes": ["forest", "taiga", "grassland"],
-        "rarity": {
-          "base_rate": 0.15,
-          "min_distance": 50
+        "Moss Golem": {
+            "biomes": [ "forest", "swamp" ],
+            "rarity": {
+                "base_rate": 0.1,
+                "min_distance": 100
+            },
+            "base_stats": {
+                "strength": 7,
+                "defence": 6,
+                "health": 15,
+                "speed": 3,
+                "stamina": 20,
+                "dexterity": 2,
+                "magic_power": 3,
+                "magic_defence": 4,
+                "wisdom": 2,
+                "intelligence": 1
+            }
         },
-        "base_stats": {
-          "strength": 6,
-          "defence": 4,
-          "health": 20,
-          "speed": 8,
-          "stamina": 15,
-          "dexterity": 6,
-          "magic_power": 1,
-          "magic_defence": 2,
-          "wisdom": 2,
-          "intelligence": 3
-        }
-      },
-      "Ice Elemental": {
-        "biomes": ["tundra", "snowy_peaks"],
-        "rarity": {
-          "base_rate": 0.05,
-          "min_distance": 300
+        "Wolf": {
+            "biomes": [ "forest", "taiga", "grassland" ],
+            "rarity": {
+                "base_rate": 0.15,
+                "min_distance": 50
+            },
+            "base_stats": {
+                "strength": 6,
+                "defence": 4,
+                "health": 10,
+                "speed": 8,
+                "stamina": 15,
+                "dexterity": 6,
+                "magic_power": 1,
+                "magic_defence": 2,
+                "wisdom": 2,
+                "intelligence": 3
+            }
         },
-        "base_stats": {
-          "strength": 5,
-          "defence": 6,
-          "health": 25,
-          "speed": 4,
-          "stamina": 20,
-          "dexterity": 3,
-          "magic_power": 8,
-          "magic_defence": 8,
-          "wisdom": 5,
-          "intelligence": 5
-        }
-      },
-      "Dragon": {
-        "biomes": ["mountain", "volcanic", "snowy_peaks"],
-        "rarity": {
-          "base_rate": 0.01,
-          "min_distance": 500
+        "Fox Spirit": {
+            "biomes": [ "forest", "taiga" ],
+            "rarity": {
+                "base_rate": 0.08,
+                "min_distance": 200
+            },
+            "base_stats": {
+                "strength": 4,
+                "defence": 3,
+                "health": 8,
+                "speed": 9,
+                "stamina": 12,
+                "dexterity": 7,
+                "magic_power": 5,
+                "magic_defence": 4,
+                "wisdom": 6,
+                "intelligence": 5
+            }
         },
-        "base_stats": {
-          "strength": 15,
-          "defence": 12,
-          "health": 50,
-          "speed": 8,
-          "stamina": 30,
-          "dexterity": 7,
-          "magic_power": 12,
-          "magic_defence": 10,
-          "wisdom": 8,
-          "intelligence": 8
+        "Ice Elemental": {
+            "biomes": [ "tundra", "snowy_peaks" ],
+            "rarity": {
+                "base_rate": 0.05,
+                "min_distance": 300
+            },
+            "base_stats": {
+                "strength": 5,
+                "defence": 6,
+                "health": 10,
+                "speed": 4,
+                "stamina": 20,
+                "dexterity": 3,
+                "magic_power": 8,
+                "magic_defence": 8,
+                "wisdom": 5,
+                "intelligence": 5
+            }
+        },
+        "Frost Troll": {
+            "biomes": [ "tundra", "snowy_peaks", "mountain" ],
+            "rarity": {
+                "base_rate": 0.07,
+                "min_distance": 250
+            },
+            "base_stats": {
+                "strength": 10,
+                "defence": 8,
+                "health": 18,
+                "speed": 5,
+                "stamina": 25,
+                "dexterity": 4,
+                "magic_power": 3,
+                "magic_defence": 5,
+                "wisdom": 3,
+                "intelligence": 2
+            }
+        },
+        "Dragon": {
+            "biomes": [ "mountain", "volcanic", "snowy_peaks" ],
+            "rarity": {
+                "base_rate": 0.01,
+                "min_distance": 500
+            },
+            "base_stats": {
+                "strength": 15,
+                "defence": 12,
+                "health": 20,
+                "speed": 8,
+                "stamina": 30,
+                "dexterity": 7,
+                "magic_power": 12,
+                "magic_defence": 10,
+                "wisdom": 8,
+                "intelligence": 8
+            }
+        },
+        "Rock Golem": {
+            "biomes": [ "mountain", "volcanic" ],
+            "rarity": {
+                "base_rate": 0.05,
+                "min_distance": 300
+            },
+            "base_stats": {
+                "strength": 12,
+                "defence": 15,
+                "health": 25,
+                "speed": 3,
+                "stamina": 35,
+                "dexterity": 2,
+                "magic_power": 2,
+                "magic_defence": 7,
+                "wisdom": 3,
+                "intelligence": 1
+            }
+        },
+        "Lava Serpent": {
+            "biomes": [ "volcanic" ],
+            "rarity": {
+                "base_rate": 0.03,
+                "min_distance": 400
+            },
+            "base_stats": {
+                "strength": 9,
+                "defence": 7,
+                "health": 15,
+                "speed": 6,
+                "stamina": 22,
+                "dexterity": 5,
+                "magic_power": 6,
+                "magic_defence": 6,
+                "wisdom": 4,
+                "intelligence": 4
+            }
+        },
+        "Sand Worm": {
+            "biomes": [ "desert", "savanna" ],
+            "rarity": {
+                "base_rate": 0.06,
+                "min_distance": 150
+            },
+            "base_stats": {
+                "strength": 8,
+                "defence": 5,
+                "health": 12,
+                "speed": 4,
+                "stamina": 18,
+                "dexterity": 3,
+                "magic_power": 2,
+                "magic_defence": 3,
+                "wisdom": 2,
+                "intelligence": 1
+            }
+        },
+        "Mirage Djinn": {
+            "biomes": [ "desert", "savanna" ],
+            "rarity": {
+                "base_rate": 0.04,
+                "min_distance": 250
+            },
+            "base_stats": {
+                "strength": 5,
+                "defence": 4,
+                "health": 8,
+                "speed": 7,
+                "stamina": 15,
+                "dexterity": 6,
+                "magic_power": 9,
+                "magic_defence": 7,
+                "wisdom": 6,
+                "intelligence": 7
+            }
+        },
+        "Swamp Witch": {
+            "biomes": [ "swamp" ],
+            "rarity": {
+                "base_rate": 0.07,
+                "min_distance": 200
+            },
+            "base_stats": {
+                "strength": 4,
+                "defence": 3,
+                "health": 9,
+                "speed": 5,
+                "stamina": 12,
+                "dexterity": 4,
+                "magic_power": 10,
+                "magic_defence": 8,
+                "wisdom": 7,
+                "intelligence": 8
+            }
+        },
+        "Mud Golem": {
+            "biomes": [ "swamp" ],
+            "rarity": {
+                "base_rate": 0.05,
+                "min_distance": 150
+            },
+            "base_stats": {
+                "strength": 6,
+                "defence": 5,
+                "health": 12,
+                "speed": 2,
+                "stamina": 18,
+                "dexterity": 1,
+                "magic_power": 2,
+                "magic_defence": 4,
+                "wisdom": 2,
+                "intelligence": 1
+            }
+        },
+        "River Serpent": {
+            "biomes": [ "river" ],
+            "rarity": {
+                "base_rate": 0.09,
+                "min_distance": 100
+            },
+            "base_stats": {
+                "strength": 7,
+                "defence": 5,
+                "health": 14,
+                "speed": 7,
+                "stamina": 20,
+                "dexterity": 6,
+                "magic_power": 4,
+                "magic_defence": 3,
+                "wisdom": 3,
+                "intelligence": 4
+            }
+        },
+        "Water Sprite": {
+            "biomes": [ "river", "ocean" ],
+            "rarity": {
+                "base_rate": 0.06,
+                "min_distance": 200
+            },
+            "base_stats": {
+                "strength": 4,
+                "defence": 3,
+                "health": 8,
+                "speed": 8,
+                "stamina": 15,
+                "dexterity": 7,
+                "magic_power": 9,
+                "magic_defence": 6,
+                "wisdom": 6,
+                "intelligence": 7
+            }
+        },
+        "Beach Crab": {
+            "biomes": [ "beach" ],
+            "rarity": {
+                "base_rate": 0.15,
+                "min_distance": 50
+            },
+            "base_stats": {
+                "strength": 5,
+                "defence": 8,
+                "health": 10,
+                "speed": 4,
+                "stamina": 12,
+                "dexterity": 3,
+                "magic_power": 1,
+                "magic_defence": 2,
+                "wisdom": 2,
+                "intelligence": 1
+            }
+        },
+        "Sea Siren": {
+            "biomes": [ "beach", "ocean" ],
+            "rarity": {
+                "base_rate": 0.05,
+                "min_distance": 300
+            },
+            "base_stats": {
+                "strength": 6,
+                "defence": 4,
+                "health": 12,
+                "speed": 7,
+                "stamina": 18,
+                "dexterity": 6,
+                "magic_power": 8,
+                "magic_defence": 5,
+                "wisdom": 7,
+                "intelligence": 6
+            }
+        },
+        "Kelp Guardian": {
+            "biomes": [ "ocean", "deep_ocean" ],
+            "rarity": {
+                "base_rate": 0.04,
+                "min_distance": 400
+            },
+            "base_stats": {
+                "strength": 8,
+                "defence": 7,
+                "health": 16,
+                "speed": 5,
+                "stamina": 25,
+                "dexterity": 4,
+                "magic_power": 6,
+                "magic_defence": 6,
+                "wisdom": 5,
+                "intelligence": 4
+            }
+        },
+        "Deep Sea Kraken": {
+            "biomes": [ "deep_ocean" ],
+            "rarity": {
+                "base_rate": 0.02,
+                "min_distance": 500
+            },
+            "base_stats": {
+                "strength": 14,
+                "defence": 10,
+                "health": 22,
+                "speed": 6,
+                "stamina": 30,
+                "dexterity": 5,
+                "magic_power": 7,
+                "magic_defence": 8,
+                "wisdom": 6,
+                "intelligence": 5
+            }
+        },
+        "Toxic Mist": {
+            "biomes": [ "rainforest" ],
+            "rarity": {
+                "base_rate": 0.06,
+                "min_distance": 250
+            },
+            "base_stats": {
+                "strength": 3,
+                "defence": 2,
+                "health": 7,
+                "speed": 6,
+                "stamina": 15,
+                "dexterity": 7,
+                "magic_power": 8,
+                "magic_defence": 5,
+                "wisdom": 4,
+                "intelligence": 5
+            }
+        },
+        "Jungle Stalker": {
+            "biomes": [ "rainforest" ],
+            "rarity": {
+                "base_rate": 0.08,
+                "min_distance": 150
+            },
+            "base_stats": {
+                "strength": 8,
+                "defence": 5,
+                "health": 14,
+                "speed": 7,
+                "stamina": 20,
+                "dexterity": 8,
+                "magic_power": 3,
+                "magic_defence": 3,
+                "wisdom": 3,
+                "intelligence": 4
+            }
         }
-      }
     }
-  }
+}
