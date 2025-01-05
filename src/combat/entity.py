@@ -54,9 +54,9 @@ class Entity:
         return max(1, round(base_meta * (1 + level_factor)))
 
     def calculate_max_hp(self) -> int:
-        base_hp = self.base_stats.health * 8
-        level_bonus = math.floor(self.level * 1.5)  # Reduced from 2.5
-        meta_bonus = self.meta_level * 3  # Reduced from 5
+        base_hp = self.base_stats.health * 4
+        level_bonus = math.floor(self.level * 1.5)
+        meta_bonus = self.meta_level * 2
         return base_hp + level_bonus + meta_bonus
 
 class EncounterManager:
@@ -111,4 +111,4 @@ class EncounterManager:
     def get_encounter_level(self, world_coords: tuple[int, int]) -> int:
         distance = math.sqrt(world_coords[0] ** 2 + world_coords[1] ** 2)
         base_level = max(1, int(distance / self.base_difficulty_radius * 20))
-        return base_level + random.randint(-2, 2)
+        return base_level

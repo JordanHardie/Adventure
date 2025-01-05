@@ -125,11 +125,14 @@ class Player(Entity):
 
     def gain_experience(self, amount: int):
         self.experience += amount
-        while self.experience >= self.next_level_exp:
+        if self.experience >= self.next_level_exp:
             self.level_up()
+            return True
+        return False
 
     def level_up(self):
         self.level += 1
+        self.points_available = 5  # Add this line
         self.experience -= self.next_level_exp
         self.next_level_exp = int(self.next_level_exp * 1.5)
         self.initialize_stats()

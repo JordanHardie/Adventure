@@ -1,4 +1,3 @@
-import random
 import pygame
 # World components
 from ..world.world import World
@@ -140,16 +139,13 @@ class GameEngine:
 
     def _handle_enemy_defeat(self) -> bool:
         """Handle enemy defeat, experience gain, and potential level up."""
-        base_exp = self.current_enemy.level * 15
-        bonus_exp = (self.current_enemy.level + 10) * 3
-        random_exp = random.randint(0, self.current_enemy.level + 10)
-
-        exp_gain = base_exp + bonus_exp + random_exp
+        exp_gain = self.current_enemy.level * 15
         self.combat_ui.add_to_log(f"Gained {exp_gain} experience!")
         self.combat_log.add_message(f"Defeated {self.current_enemy.name}! +{exp_gain} exp")
         
-        if self.player.gain_experience(exp_gain):
-            self.level_up_ui.show(self.player.points_available)
+        leveled_up = self.player.gain_experience(exp_gain)
+        if leveled_up:
+            self.level_up_ui.show(5)  # Give 5 stat points on level up
             self.game_state = "level_up"
         else:
             self.game_state = "game"
