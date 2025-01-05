@@ -1,4 +1,6 @@
+import random
 import pygame
+
 # World components
 from ..world.world import World
 from ..engine.player import Player
@@ -13,10 +15,11 @@ from ..UI.combat_log_ui import CombatLogUI
 # Configuration
 from ..config.game_config import GameConfig
 from ..config.font_config import FontConfig
+from ..engine.generics import save_game_data, load_game_data
 
 # Combat system
 from ..combat.combat_manager import CombatManager
-from ..combat.combat_manager import EncounterManager
+from ..combat.encounter_manager import EncounterManager
 
 class GameEngine:
     """
@@ -76,9 +79,11 @@ class GameEngine:
 
     def continue_game(self):
         """Load saved game state."""
-        x, y = self.menu.load_game()
-        self.player = Player(x, y)
-        self.game_state = "game"
+        save_data = load_game_data()
+        if save_data:
+            x, y = save_data.get('x', 0), save_data.get('y', 0)
+            self.player = Player(x, y)
+            self.game_state = "game"
 
     def handle_input(self) -> bool:
         """
@@ -139,7 +144,9 @@ class GameEngine:
 
     def _handle_enemy_defeat(self) -> bool:
         """Handle enemy defeat, experience gain, and potential level up."""
-        exp_gain = self.current_enemy.level * 15
+        exp_gain = self.current_enemy.level * 10
+        exp_gain_bonus = exp_gain + self.current_enemy.level + self.current_enemy.meta_level
+        exp_gain = exp_gain_bonus + self.current_enemy.level * (2 + random.randint(0, 3))
         self.combat_ui.add_to_log(f"Gained {exp_gain} experience!")
         self.combat_log.add_message(f"Defeated {self.current_enemy.name}! +{exp_gain} exp")
         
@@ -178,7 +185,7 @@ class GameEngine:
                 return False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    self.menu.save_game(self.player.x, self.player.y)
+                    save_game_data({'x': self.player.x, 'y': self.player.y})
                     self.game_state = "menu"
                 elif event.key == pygame.K_F11:
                     self.toggle_fullscreen()

@@ -1,9 +1,5 @@
-import json
-import os
-import math
-import random
-from dataclasses import dataclass
 from enum import Enum, auto
+from dataclasses import dataclass
 
 class EntityType(Enum):
     PLAYER = auto()
@@ -26,7 +22,7 @@ class Stats:
         scale_factor = (level * 0.15 + meta_level * 0.1) / 10
         for attr in self.__dict__:
             current_value = getattr(self, attr)
-            scaled_value = math.floor(current_value * (1 + scale_factor))
+            scaled_value = max(1, int(current_value * (1 + scale_factor)))
             setattr(self, attr, scaled_value)
 
 class Entity:
@@ -54,61 +50,7 @@ class Entity:
         return max(1, round(base_meta * (1 + level_factor)))
 
     def calculate_max_hp(self) -> int:
-        base_hp = self.base_stats.health * 4
-        level_bonus = math.floor(self.level * 1.5)
+        base_hp = self.base_stats.health * 2
+        level_bonus = int(self.level * 1.5)
         meta_bonus = self.meta_level * 2
         return base_hp + level_bonus + meta_bonus
-
-class EncounterManager:
-    def __init__(self):
-        self.monster_data = self._load_monsters()
-        self.base_difficulty_radius = 100
-        self.last_encounter_coords = None
-
-    def _load_monsters(self) -> dict:
-        script_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-        with open(os.path.join(script_dir, "src", "config", "monsters.json"), "r", encoding="utf-8") as f:
-            data = json.load(f)
-            for monster in data["monsters"].values():
-                monster["rarity"]["base_rate"] *= 0.04
-                monster["rarity"]["min_distance"] = max(150, monster["rarity"]["min_distance"])
-            return data["monsters"]
-
-    def should_encounter(self, world_coords: tuple[int, int], biome: str) -> tuple[bool, str]:
-        if self.last_encounter_coords:
-            dx = world_coords[0] - self.last_encounter_coords[0]
-            dy = world_coords[1] - self.last_encounter_coords[1]
-            if math.sqrt(dx*dx + dy*dy) < 150:
-                return False, None
-
-        distance = math.sqrt(world_coords[0] ** 2 + world_coords[1] ** 2)
-        valid_monsters = [name for name, data in self.monster_data.items() 
-                         if biome in data["biomes"]]
-
-        for name in valid_monsters:
-            monster = self.monster_data[name]
-            if distance >= monster["rarity"]["min_distance"] and random.random() < monster["rarity"]["base_rate"]:
-                self.last_encounter_coords = world_coords
-                return True, name
-
-        return False, None
-
-    def generate_encounter(self, world_coords: tuple[int, int], biome: str) -> Entity:
-        valid_monsters = [m for m_name, m in self.monster_data.items() 
-                         if biome in m["biomes"]]
-        if not valid_monsters:
-            valid_monsters = list(self.monster_data.values())
-
-        monster_data = random.choice(valid_monsters)
-        level = self.get_encounter_level(world_coords)
-        
-        monster = Entity(list(self.monster_data.keys())[list(self.monster_data.values()).index(monster_data)], 
-                        EntityType.MONSTER, level)
-        monster.base_stats = Stats(**monster_data["base_stats"])
-        monster.initialize_stats()
-        return monster
-
-    def get_encounter_level(self, world_coords: tuple[int, int]) -> int:
-        distance = math.sqrt(world_coords[0] ** 2 + world_coords[1] ** 2)
-        base_level = max(1, int(distance / self.base_difficulty_radius * 20))
-        return base_level

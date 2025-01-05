@@ -49,8 +49,9 @@ class CombatLogUI:
             if self.fade_timers[idx] == 0:
                 to_remove.append(idx)
                 
-        for idx in to_remove:
+        for idx in sorted(to_remove, reverse=True):
             del self.fade_timers[idx]
+            del self.messages[idx]
 
     def draw(self):
         """Render combat log messages with fade effect."""

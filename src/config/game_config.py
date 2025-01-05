@@ -1,5 +1,4 @@
-import os
-import json
+from ..engine.generics import load_json_config
 
 class GameConfig:
     SCREEN_WIDTH = 1920
@@ -32,6 +31,4 @@ class GameConfig:
 
     @staticmethod
     def load_biomes():
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        with open(os.path.join(script_dir, "biomes.json"), "r", encoding="utf-8") as f:
-            return json.load(f)
+        return load_json_config("biomes.json")

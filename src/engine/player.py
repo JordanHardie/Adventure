@@ -1,10 +1,9 @@
 from dataclasses import dataclass
 from enum import Enum, auto
 from typing import Optional, Dict, List
-import json
-import os
 import random
 from ..combat.entity import Entity, EntityType, Stats
+from ..engine.generics import load_json_config
 
 class ItemType(Enum):
     HELMET = auto()
@@ -16,6 +15,7 @@ class ItemType(Enum):
     FEET = auto()
     POTION = auto()
     GOLD = auto()
+    WEAPON = auto()
 
 @dataclass
 class ItemStats(Stats):
@@ -25,18 +25,13 @@ class Item:
     def __init__(self, name: str, item_type: ItemType, quality: int, stats: ItemStats):
         self.name = name
         self.item_type = item_type
-        self.quality = quality  # 0-4, matching suffixes.json
+        self.quality = quality  # 0-4, matching prefixes.json
         self.stats = stats
-        self._load_suffixes()
-        self.full_name = f"{self._get_random_suffix()} {name}"
+        self.prefixes = load_json_config("prefixes.json")
+        self.full_name = f"{self._get_random_prefix()} {name}"
 
-    def _load_suffixes(self):
-        script_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-        with open(os.path.join(script_dir, "src", "config", "suffixes.json"), "r") as f:
-            self.suffixes = json.load(f)
-
-    def _get_random_suffix(self) -> str:
-        return random.choice(self.suffixes[str(self.quality)])
+    def _get_random_prefix(self) -> str:
+        return random.choice(self.prefixes[str(self.quality)])
 
 class Inventory:
     def __init__(self):
@@ -132,7 +127,7 @@ class Player(Entity):
 
     def level_up(self):
         self.level += 1
-        self.points_available = 5  # Add this line
+        self.points_available = 5
         self.experience -= self.next_level_exp
         self.next_level_exp = int(self.next_level_exp * 1.5)
         self.initialize_stats()
