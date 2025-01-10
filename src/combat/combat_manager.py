@@ -1,25 +1,97 @@
 from .entity import Entity, EntityType
 from .loot_generator import LootGenerator
-from ..engine.generics import RandomUtils
+from .monster_ai import MonsterAI
+from ..engine.generics import RandomUtils, load_json_config
 
 class CombatManager:
     def __init__(self):
         self.current_encounter = None
         self.turn_order = []
         self.loot_generator = LootGenerator()
-
-    def update(self):
-        """No updates needed per frame for combat manager"""
-        pass
+        self.monster_data = load_json_config("monsters.json")["monsters"]
+        self.monster_ai = None
 
     def start_combat(self, player: Entity, enemy: Entity):
         self.current_encounter = (player, enemy)
         self.determine_turn_order()
+        
+        # Initialize AI for the enemy
+        monster_config = self.monster_data[enemy.name]
+        self.monster_ai = MonsterAI(
+            enemy,
+            monster_config["behavior"],
+            monster_config["actions"]
+        )
+
+    def process_turn(self, attacker: Entity, defender: Entity, action: str) -> dict:
+        result = {
+            "damage_dealt": 0,
+            "is_critical": False,
+            "status_effects": [],
+            "message": "",
+            "loot": None
+        }
+
+        if attacker.entity_type == EntityType.PLAYER:
+            self._process_player_action(attacker, defender, action, result)
+        else:
+            self._process_monster_action(attacker, defender, result)
+
+        if defender.current_hp <= 0 and defender.entity_type == EntityType.MONSTER:
+            items, gold = self.loot_generator.generate_loot(defender.level, defender.meta_level)
+            result["loot"] = {"items": items, "gold": gold}
+
+        return result
+
+    def _process_player_action(self, player: Entity, monster: Entity, action: str, result: dict):
+        if action == "attack":
+            damage = self.calculate_damage(player, monster)
+            monster.current_hp -= damage
+            result["damage_dealt"] = damage
+            result["message"] = f"You attack for {damage} damage!"
+
+    def _process_monster_action(self, monster: Entity, player: Entity, result: dict):
+        # Get AI decision
+        action_choice = self.monster_ai.choose_action(player)
+        action_type = action_choice["action"]["type"]
+        
+        match action_type:
+            case "physical" | "magic":
+                damage = self.calculate_damage(
+                    monster, player, 
+                    is_magical=(action_type == "magic")
+                )
+                player.current_hp -= damage
+                result["damage_dealt"] = damage
+                result["message"] = action_choice["message"] + f" Deals {damage} damage!"
+                
+            case "heal":
+                heal_amount = max(5, monster.current_stats.health)
+                monster.current_hp = min(
+                    monster.max_hp,
+                    monster.current_hp + heal_amount
+                )
+                result["message"] = action_choice["message"] + f" Heals for {heal_amount}!"
+                
+            case "buff":
+                # For now, just use the message
+                result["message"] = action_choice["message"]
+                
+            case "debuff":
+                # For now, just use the message
+                result["message"] = action_choice["message"]
+                
+            case "special":
+                # Handle special cases with message for now
+                result["message"] = action_choice["message"]
 
     def determine_turn_order(self):
         player, monster = self.current_encounter
-        self.turn_order = sorted([player, monster], 
-                               key=lambda x: x.current_stats.speed, reverse=True)
+        self.turn_order = sorted(
+            [player, monster], 
+            key=lambda x: x.current_stats.speed, 
+            reverse=True
+        )
 
     def calculate_damage(self, attacker: Entity, defender: Entity, is_magical: bool = False) -> int:
         if is_magical:
@@ -37,24 +109,3 @@ class CombatManager:
             base_damage *= 2
 
         return base_damage
-
-    def process_turn(self, attacker: Entity, defender: Entity, action: str) -> dict:
-        result = {
-            "damage_dealt": 0,
-            "is_critical": False,
-            "status_effects": [],
-            "message": "",
-            "loot": None
-        }
-
-        if action == "attack":
-            damage = self.calculate_damage(attacker, defender)
-            defender.current_hp -= damage
-            result["damage_dealt"] = damage
-            result["message"] = f"{attacker.name} attacks for {damage} damage!"
-
-            if defender.current_hp <= 0 and defender.entity_type == EntityType.MONSTER:
-                items, gold = self.loot_generator.generate_loot(defender.level, defender.meta_level)
-                result["loot"] = {"items": items, "gold": gold}
-
-        return result

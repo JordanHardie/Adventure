@@ -5,6 +5,7 @@ from ...UI.combat_ui import CombatUI
 from ...UI.level_up_ui import LevelUpUI
 from ...UI.inventory_ui import InventoryUI
 from ...UI.combat_log_ui import CombatLogUI
+from ...UI.skill_tree_ui import SkillTreeUI
 from ...UI.loading_screen import LoadingScreen
 
 class UIManager:
@@ -14,6 +15,7 @@ class UIManager:
         self.loading_screen.update(0.2, "Initializing menus...")
         self.menu = Menu(screen)
         self.combat_ui = CombatUI(screen)
+        self.skill_tree_ui = SkillTreeUI(screen)
         
         self.loading_screen.update(0.4, "Loading combat system...")
         self.level_up_ui = LevelUpUI(screen, pygame.font.SysFont(None, 32))

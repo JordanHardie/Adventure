@@ -1,5 +1,6 @@
 import random
 import pygame
+import numpy as np
 from typing import Dict
 from ...config.game_config import GameConfig
 from ...config.font_config import FontConfig
@@ -15,21 +16,36 @@ class DisplayManager:
         self.font_config = FontConfig(self.fonts)
         self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 
-    def render_debug_maps(self, screen, debug_maps):
+    def render_debug_maps(self, debug_maps):
+        """Renders debug visualization of noise maps"""
         if not debug_maps:
             return
-            
-        if self.show_noise_map:
+        
+        if hasattr(self, 'show_noise_map') and self.show_noise_map:
             # Convert noise map to pygame surface
-            combined_map = debug_maps["combined"]
-            surface = pygame.surfarray.make_surface(combined_map * 255)
-            screen.blit(surface, (0, 0))
-            
-        elif self.show_cell_borders:
-            # Draw cell borders
-            cell_borders = debug_maps["cell_borders"]
-            surface = pygame.surfarray.make_surface(cell_borders * 255)
-            screen.blit(surface, (0, 0))
+            combined_map = debug_maps.get("combined")
+            if combined_map is not None:
+                # Scale values to 0-255 range and convert to uint8
+                scaled_map = (combined_map * 255).astype('uint8')
+                # Create RGB array by duplicating the grayscale values
+                rgb_map = np.stack((scaled_map,) * 3, axis=-1)
+                try:
+                    surface = pygame.surfarray.make_surface(rgb_map)
+                    self.screen.blit(surface, (0, 0))
+                except ValueError as e:
+                    print(f"Error creating debug surface: {e}")
+                
+        elif hasattr(self, 'show_cell_borders') and self.show_cell_borders:
+            cell_borders = debug_maps.get("cell_borders")
+            if cell_borders is not None:
+                # Scale values to 0-255 range and convert to uint8  
+                scaled_borders = (cell_borders * 255).astype('uint8')
+                rgb_borders = np.stack((scaled_borders,) * 3, axis=-1)
+                try:
+                    surface = pygame.surfarray.make_surface(rgb_borders)
+                    self.screen.blit(surface, (0, 0))
+                except ValueError as e:
+                    print(f"Error creating debug surface: {e}")
 
     def toggle_noise_map(self):
         self.show_noise_map = not self.show_noise_map

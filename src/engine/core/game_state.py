@@ -73,12 +73,15 @@ class GameState:
             self._handle_loot(combat_result["loot"])
 
         if self.player.gain_experience(exp_gain):
+            # Add skill points to the skill tree when leveling up
+            self.ui_manager.combat_log.add_message(f"Level Up! Gained 2 skill points!")
+            self.systems.combat_system.skill_tree.add_skill_points(self.player.skill_points)
+            self.player.skill_points = 0  # Reset after adding to skill tree
+        
             self.ui_manager.level_up_ui.show(5)
             self.transition_to("level_up")
         else:
             self.transition_to("game")
-        
-        self.ui_manager.combat_log.visible = True
 
     def _calculate_exp_gain(self) -> int:
         base_exp = self.current_enemy.level * 10

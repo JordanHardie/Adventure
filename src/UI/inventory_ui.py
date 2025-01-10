@@ -337,14 +337,22 @@ class InventoryUI:
 
         self.hovered_item = None
 
+        # Check equipment slots
         for slot_type, rect in self.equipment_slots.items():
             if rect.collidepoint(pos):
                 self.hovered_item = player.inventory.equipped.get(slot_type)
                 return
 
+        # Check ring slots
         for i, rect in enumerate(self.ring_slots):
-            if rect.collidepoint(pos):
+            if rect.collidepoint(pos) and i < len(player.inventory.rings):
                 self.hovered_item = player.inventory.rings[i]
+                return
+
+        # Check inventory slots
+        for i, rect in enumerate(self.inventory_slots):
+            if rect.collidepoint(pos) and i < len(player.inventory.items):
+                self.hovered_item = player.inventory.items[i]
                 return
 
     def equip_item(self, player: Player, slot_type: ItemType) -> None:

@@ -79,14 +79,19 @@ class LevelUpUI(BaseUI):
         surface.set_alpha(128)
         self.screen.blit(surface, (0, 0))
 
-        # Draw title and stats
-        title = self.font.render(
-            f"Level Up! Points: {self.points_available}", True, GameConfig.WHITE
-        )
-        self.screen.blit(title, (400, 200))
+        # Draw level up menu
+        title = self.font.render(f"Level Up!", True, GameConfig.WHITE)
+        self.screen.blit(title, (400, 150))
+    
+        # Add skill points notification
+        skill_text = self.font.render("2 Skill Points Added! (Press K to open skill tree)", True, GameConfig.WHITE)
+        self.screen.blit(skill_text, (400, 180))
+
+        points_text = self.font.render(f"Attribute Points: {self.points_available}", True, GameConfig.WHITE)
+        self.screen.blit(points_text, (400, 220))
 
         for i, stat in enumerate(self.stats):
             color = GameConfig.WHITE if i == self.selected_stat else (150, 150, 150)
             value = getattr(current_stats, stat)
             text = self.font.render(f"{stat.capitalize()}: {value}", True, color)
-            self.screen.blit(text, (400, 250 + i * 30))
+            self.screen.blit(text, (400, 260 + i * 30))

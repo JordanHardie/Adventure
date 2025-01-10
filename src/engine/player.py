@@ -102,6 +102,9 @@ class Player(Entity):
         self.initialize_stats()
         self.experience = 0
         self.next_level_exp = 100
+        # Add these new attributes
+        self.skill_points = 0
+        self.unlocked_skills = []
 
     def get_total_stats(self) -> Stats:
         equipment_stats = self.inventory.get_total_stats()
@@ -127,7 +130,8 @@ class Player(Entity):
 
     def level_up(self):
         self.level += 1
-        self.points_available = 5
+        self.points_available = 3
+        self.skill_points += 2
         self.experience -= self.next_level_exp
         self.next_level_exp = int(self.next_level_exp * 1.5)
         self.initialize_stats()
