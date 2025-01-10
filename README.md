@@ -1,14 +1,34 @@
 # Adventure!
 
-A procedurally generated roguelike game built with Python and Pygame.
+A procedurally generated roguelike game built with Python and Pygame featuring dynamic world generation, turn-based combat, and character progression.
 
 ## Features
-- Procedural world generation with diverse biomes
-- Turn-based combat system with strategic elements
-- Character progression and equipment system
-- Dynamic monster encounters based on world location
-- Customizable character development
-- Save/Load functionality
+
+- **Procedural World Generation**
+  - Diverse biomes with unique characteristics
+  - Dynamic terrain generation using Perlin noise
+  - River and mountain systems
+  - Climate simulation (temperature/humidity)
+
+- **Combat System**
+  - Turn-based strategic combat
+  - Diverse monster types per biome
+  - Dynamic encounter scaling
+  - Loot generation system
+  - Combat log with fade effects
+
+- **Character System**
+  - Stat-based character progression
+  - Level-up system with skill points
+  - Equipment system with quality tiers
+  - Multiple equipment slots (armor, weapons, rings)
+  - Inventory management with drag-and-drop
+
+- **Game Systems**
+  - Save/Load functionality
+  - Multithreaded chunk loading
+  - Font support management
+  - UI system with multiple views
 
 ## Installation
 
@@ -22,88 +42,76 @@ pip install -r requirements.txt
 python setup.py install
 ```
 
-## Building
-
-Use `build.py` to create an executable:
-```bash
-python build.py
-```
-
-The executable will be created in the `dist` directory.
-
 ## Project Structure
 
 ```
 ├── combat/
-│   ├── combat_manager.py    # Manages combat mechanics and turn processing
-│   ├── encounter_manager.py    # Manages monster encounters and spawning based on world position and biome
-│   ├── entity.py    # Defines entity types and their stats
-│   ├── loot_generator.py    # Handles generation of items and gold drops from monsters
-│   ├── name_generator.py    # Generates names for items using quality-based prefixes and descriptions
+│   ├── combat_manager.py      # Combat mechanics and turns
+│   ├── encounter_manager.py   # Monster spawning logic
+│   ├── entity.py             # Base entity system
+│   ├── loot_generator.py     # Item generation
+│   ├── name_generator.py     # Item naming system
 ├── config/
-│   ├── biomes.json    # Biome definitions and parameters
-│   ├── descriptions.json    # Item description components
-│   ├── font_config.py    # Font configuration and management
-│   ├── font_support.json    # Font character support mapping
-│   ├── game_config.py    # Core game settings and constants
-│   ├── items.json    # Item definitions and properties
-│   ├── monsters.json    # Monster definitions and spawn rules
-│   ├── prefixes.json    # Quality-based item prefix definitions
+│   ├── biomes.json           # Biome definitions
+│   ├── descriptions.json     # Item descriptions
+│   ├── font_config.py        # Font management
+│   ├── font_support.json     # Character support
+│   ├── game_config.py        # Game settings
+│   ├── items.json           # Item definitions
+│   ├── monsters.json        # Monster definitions
+│   ├── prefixes.json        # Item quality prefixes
 ├── engine/
-│   ├── game_engine.py    # Core game engine managing game state, rendering, and user input
-│   ├── player.py    # Player character functionality and inventory management
+│   ├── core/
+│   │   ├── display_manager.py    # Graphics rendering
+│   │   ├── game_engine.py        # Core game loop
+│   │   ├── game_state.py         # Game state management
+│   │   ├── input_manager.py      # Input handling
+│   │   ├── system_manager.py     # Game systems
+│   │   └── ui_manager.py         # UI state management
+│   ├── game_engine.py            # Main game initialization
+│   ├── player.py                 # Player functionality
+│   └── generics.py               # Utility functions
 ├── UI/
-│   ├── combat_log_ui.py    # Displays combat and loot messages during gameplay
-│   ├── combat_ui.py    # Combat interface management
-│   ├── inventory_ui.py    # Inventory interface and equipment management
-│   ├── level_up_ui.py    # Level up interface and stat allocation
-│   ├── menu.py    # Menu system and game state management
+│   ├── combat_log_ui.py    # Combat messaging
+│   ├── combat_ui.py        # Combat interface
+│   ├── inventory_ui.py     # Inventory system
+│   ├── level_up_ui.py      # Character progression
+│   ├── loading_screen.py   # Loading interface
+│   ├── menu.py            # Main menu system
 ├── world/
-│   ├── terrain_generator.py    # Procedural terrain generation
-│   ├── world.py    # World management and chunk loading
-│   ├── world_chunk.py    # World chunk data structure
-├── tools/
-│   ├── readme_generator.py    # Automatic README.md generation
-├── build.py    # Build script for executable creation
-├── requirements.txt    # Project dependencies
-├── setup.py    # Package configuration
-```
+│   ├── terrain_generator.py # World generation
+│   ├── world.py           # World management
+│   ├── world_chunk.py     # Chunk data structure
 ```
 
-## TODO
+## Technical Details
 
-## Combat System
-- combat_manager.py: Manages combat mechanics and turn processing
-- encounter_manager.py: Manages monster encounters and spawning based on world position
-- entity.py: Defines entity types and their stats
-- loot_generator.py: Handles generation of items and gold drops from monsters
-- name_generator.py: Generates names for items using quality-based prefixes and descriptions
+### World Generation
+- Uses multiple layers of Perlin noise for terrain
+- Implements threaded chunk generation
+- Features biome determination based on climate factors
+- Includes river system generation
 
-## World Generation
-- terrain_generator.py: Procedural terrain generation with noise maps
-- world.py: World management with chunked loading and biome determination
-- world_chunk.py: Chunk-based world data structure
+### Combat System
+- Turn-based combat with initiative system
+- Stat-based damage calculation
+- Critical hit system
+- Dynamic monster scaling based on distance from origin
 
-## Game Engine
-- game_engine.py: Core game engine managing game state, rendering, and user input
-- player.py: Player character functionality and inventory management
+### Equipment System
+- Quality-based item generation (0-4 tiers)
+- Procedural item naming
+- Stat scaling based on quality and level
+- Multiple equipment slots with unique bonuses
 
-## User Interface
-- combat_log_ui.py: Displays combat and loot messages during gameplay
-- combat_ui.py: Combat interface and turn management
-- inventory_ui.py: Inventory and equipment management interface
-- level_up_ui.py: Character progression and stat allocation
-- menu.py: Menu system with save/load functionality
-
-## Configuration
-- font_config.py: Font configuration and management
-- game_config.py: Core game settings and constants
-- items.json: Item definitions and properties
-- biomes.json: Biome definitions with parameters
-- descriptions.json: Item description components
-- monsters.json: Monster definitions and spawn rules
-- prefixes.json: Quality-based item prefix definitions
-
-## Save System
-Game saves are stored in:
+### Save System
+Save files are stored in:
 - Windows: `%APPDATA%/Adventure/save.json`
+
+## Contributing
+
+See the GitHub repository for contribution guidelines.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

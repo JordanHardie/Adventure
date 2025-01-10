@@ -1,6 +1,6 @@
-import random
 from .entity import Entity, EntityType
 from .loot_generator import LootGenerator
+from ..engine.generics import RandomUtils
 
 class CombatManager:
     def __init__(self):
@@ -8,8 +8,12 @@ class CombatManager:
         self.turn_order = []
         self.loot_generator = LootGenerator()
 
-    def start_combat(self, player: Entity, monster: Entity):
-        self.current_encounter = (player, monster)
+    def update(self):
+        """No updates needed per frame for combat manager"""
+        pass
+
+    def start_combat(self, player: Entity, enemy: Entity):
+        self.current_encounter = (player, enemy)
         self.determine_turn_order()
 
     def determine_turn_order(self):
@@ -17,8 +21,7 @@ class CombatManager:
         self.turn_order = sorted([player, monster], 
                                key=lambda x: x.current_stats.speed, reverse=True)
 
-    def calculate_damage(self, attacker: Entity, defender: Entity, 
-                        is_magical: bool = False) -> int:
+    def calculate_damage(self, attacker: Entity, defender: Entity, is_magical: bool = False) -> int:
         if is_magical:
             attack = attacker.current_stats.magic_power
             defence = defender.current_stats.magic_defence
@@ -28,7 +31,7 @@ class CombatManager:
 
         base_damage = max(1, attack - defence // 2)
         crit_chance = attacker.current_stats.dexterity * 0.05
-        is_crit = random.random() < crit_chance
+        is_crit = RandomUtils.chance(crit_chance)
 
         if is_crit:
             base_damage *= 2

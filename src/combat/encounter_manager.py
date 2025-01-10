@@ -1,6 +1,5 @@
-import random
 from .entity import Entity, EntityType, Stats
-from ..engine.generics import load_json_config, calculate_distance
+from ..engine.generics import calculate_distance, RandomUtils, load_json_config
 
 class EncounterManager:
     def __init__(self):
@@ -8,12 +7,9 @@ class EncounterManager:
         self.base_difficulty_radius = 100
         self.last_encounter_coords = None
 
-    def _load_monsters(self) -> dict:
-        data = load_json_config("monsters.json")
-        for monster in data["monsters"].values():
-            monster["rarity"]["base_rate"] = 0.01  # 1% base chance
-            monster["rarity"]["min_distance"] = max(150, monster["rarity"]["min_distance"])
-        return data["monsters"]
+    def _load_monsters(self):
+        monsters_config = load_json_config("monsters.json")
+        return monsters_config["monsters"]
 
     def should_encounter(self, world_coords: tuple[int, int], biome: str) -> tuple[bool, str]:
         if self.last_encounter_coords:
@@ -30,7 +26,7 @@ class EncounterManager:
 
         for name in valid_monsters:
             monster = self.monster_data[name]
-            if distance >= monster["rarity"]["min_distance"] and random.random() < monster["rarity"]["base_rate"]:
+            if distance >= monster["rarity"]["min_distance"] and RandomUtils.chance(monster["rarity"]["base_rate"]):
                 self.last_encounter_coords = world_coords
                 return True, name
 
@@ -42,7 +38,7 @@ class EncounterManager:
         if not valid_monsters:
             valid_monsters = list(self.monster_data.values())
 
-        monster_data = random.choice(valid_monsters)
+        monster_data = RandomUtils.choice(valid_monsters)
         level = self.get_encounter_level(world_coords)
         
         monster = Entity(
@@ -57,4 +53,4 @@ class EncounterManager:
     def get_encounter_level(self, world_coords: tuple[int, int]) -> int:
         distance = calculate_distance(world_coords[0], world_coords[1], 0, 0)
         base_level = max(1, int(distance / (self.base_difficulty_radius * 5)))
-        return base_level + random.randint(-1, 1) + 1
+        return base_level + RandomUtils.int(-1, 1) + 1

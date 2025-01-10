@@ -1,16 +1,18 @@
 import pygame
-from ..config.game_config import GameConfig
 from ..combat.entity import Entity
+from ..engine.generics import BaseUI
+from ..config.game_config import GameConfig
 
-class CombatUI:
-    def __init__(self, screen: pygame.Surface):
-        self.screen = screen
+class CombatUI(BaseUI):
+    def __init__(self, screen):
+        super().__init__(screen)
         self.font = pygame.font.SysFont(None, 32)
         self.large_font = pygame.font.SysFont(None, 48)
         self.selected_action = 0
         self.actions = ["Attack", "Magic", "Item", "Run"]
         self.combat_log = []
         self.max_log_lines = 3
+        self.visible = True  # Make sure UI is visible by default
 
     def add_to_log(self, message: str):
         self.combat_log.append(message)
@@ -42,20 +44,27 @@ class CombatUI:
     def draw_combat_scene(self, player: Entity, enemy: Entity):
         self.screen.fill(GameConfig.BLACK)
 
-        # Draw enemy
+        # Draw enemy stats at the top
         enemy_text = self.large_font.render(enemy.name, True, GameConfig.WHITE)
         enemy_x = (self.screen.get_width() - enemy_text.get_width()) // 2
         self.screen.blit(enemy_text, (enemy_x, 100))
         self.draw_entity_stats(enemy, enemy_x, 150)
 
-        # Draw player stats
+        # Draw player stats at the bottom
         self.draw_entity_stats(player, 50, self.screen.get_height() - 200)
 
-        # Draw combat log
+        # Draw combat log in the middle
         self.draw_combat_log()
 
-        # Draw combat menu
+        # Draw combat menu at the bottom
         self.draw_combat_menu()
+
+        pygame.display.flip()
+
+    def render(self, player, enemy):
+        if not self.visible:
+            return
+        self.draw_combat_scene(player, enemy)
 
     def handle_input(self) -> str:
         for event in pygame.event.get():
@@ -63,13 +72,9 @@ class CombatUI:
                 return "quit"
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    self.selected_action = (self.selected_action - 1) % len(
-                        self.actions
-                    )
+                    self.selected_action = (self.selected_action - 1) % len(self.actions)
                 elif event.key == pygame.K_RIGHT:
-                    self.selected_action = (self.selected_action + 1) % len(
-                        self.actions
-                    )
+                    self.selected_action = (self.selected_action + 1) % len(self.actions)
                 elif event.key == pygame.K_RETURN:
                     return self.actions[self.selected_action].lower()
         return None

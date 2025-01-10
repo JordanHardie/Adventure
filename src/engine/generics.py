@@ -1,6 +1,7 @@
 import os
 import json
-from typing import Any, Dict, Optional
+import random
+from typing import Any, Dict, List, Optional, TypeVar
 
 def get_project_root() -> str:
     """Get the root directory of the project."""
@@ -39,3 +40,68 @@ def load_game_data(filename: str = "save.json") -> Optional[Dict[str, Any]]:
 def calculate_distance(x1: int, y1: int, x2: int, y2: int) -> float:
     """Calculate Euclidean distance between two points."""
     return ((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5
+
+class BaseUI:
+    def __init__(self, screen):
+        self.screen = screen
+        self.visible = False
+        
+    def show(self):
+        self.visible = True
+        
+    def hide(self):
+        self.visible = False
+        
+    def toggle(self):
+        self.visible = not self.visible
+        
+    def handle_input(self, *args, **kwargs):
+        pass
+        
+    def render(self, *args, **kwargs):
+        if not self.visible:
+            return
+            
+    def handle_click(self, *args, **kwargs):
+        if not self.visible:
+            return False
+        return True
+
+    def handle_hover(self, *args, **kwargs):
+        if not self.visible:
+            return
+
+T = TypeVar('T')
+
+class RandomUtils:
+    @staticmethod
+    def set_seed(seed: int) -> None:
+        random.seed(seed)
+
+    @staticmethod
+    def int(min_val: int, max_val: int) -> int:
+        return random.randint(min_val, max_val)
+    
+    @staticmethod
+    def float(min_val: float = 0.0, max_val: float = 1.0) -> float:
+        return random.uniform(min_val, max_val)
+        
+    @staticmethod
+    def chance(probability: float) -> bool:
+        return random.random() < probability
+        
+    @staticmethod
+    def choice(items: List[T]) -> T:
+        return random.choice(items)
+
+    @staticmethod
+    def choices(items: List[T], weights: List[float] = None, k: int = 1) -> List[T]:
+        return random.choices(items, weights=weights, k=k)
+
+    @staticmethod   
+    def sample(items: List[T], k: int) -> List[T]:
+        return random.sample(items, k)
+
+    @staticmethod
+    def shuffle(items: List[Any]) -> None:
+        random.shuffle(items)
