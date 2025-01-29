@@ -1,0 +1,126 @@
+{
+    "WARRIOR": {
+      "base_stats": {
+        "strength": 2,
+        "defence": 1
+      },
+      "skills": {
+        "basic_strike": {
+          "name": "Basic Strike",
+          "description": "A basic melee attack",
+          "position": [0, 0],
+          "requirements": {
+            "level": 1,
+            "strength": 5
+          },
+          "stats": {
+            "strength": 1
+          },
+          "children": ["power_strike", "quick_strike"],
+          "exclusive_group": null,
+          "type": "PHYSICAL",
+          "mana_cost": 0,
+          "stamina_cost": 10,
+          "cooldown": 0,
+          "base_damage": 15,
+          "scaling": {
+            "strength": 1.2
+          }
+        },
+        "power_strike": {
+          "name": "Power Strike",
+          "description": "A powerful but slow attack",
+          "position": [-1, 1],
+          "requirements": {
+            "level": 3,
+            "strength": 10
+          },
+          "stats": {
+            "strength": 2,
+            "defence": -1
+          },
+          "children": ["devastating_blow"],
+          "exclusive_group": "strike_choice",
+          "type": "PHYSICAL",
+          "mana_cost": 0,
+          "stamina_cost": 25,
+          "cooldown": 2,
+          "base_damage": 30,
+          "scaling": {
+            "strength": 1.8
+          }
+        },
+        "quick_strike": {
+          "name": "Quick Strike",
+          "description": "A fast but weaker attack",
+          "position": [1, 1],
+          "requirements": {
+            "level": 3,
+            "dexterity": 10
+          },
+          "stats": {
+            "speed": 2,
+            "dexterity": 1
+          },
+          "children": ["flurry"],
+          "exclusive_group": "strike_choice",
+          "type": "PHYSICAL",
+          "mana_cost": 0,
+          "stamina_cost": 15,
+          "cooldown": 1,
+          "base_damage": 20,
+          "scaling": {
+            "dexterity": 1.5
+          }
+        },
+        "devastating_blow": {
+          "name": "Devastating Blow",
+          "description": "An extremely powerful attack with long cooldown",
+          "position": [-1, 2],
+          "requirements": {
+            "level": 5,
+            "strength": 15
+          },
+          "stats": {
+            "strength": 3,
+            "defence": -2
+          },
+          "children": [],
+          "exclusive_group": null,
+          "type": "PHYSICAL",
+          "mana_cost": 0,
+          "stamina_cost": 40,
+          "cooldown": 4,
+          "base_damage": 50,
+          "scaling": {
+            "strength": 2.2
+          }
+        },
+        "flurry": {
+          "name": "Flurry",
+          "description": "A rapid series of light attacks",
+          "position": [1, 2],
+          "requirements": {
+            "level": 5,
+            "dexterity": 15,
+            "speed": 10
+          },
+          "stats": {
+            "speed": 3,
+            "dexterity": 2
+          },
+          "children": [],
+          "exclusive_group": null,
+          "type": "PHYSICAL",
+          "mana_cost": 0,
+          "stamina_cost": 30,
+          "cooldown": 3,
+          "base_damage": 15,
+          "scaling": {
+            "dexterity": 0.8,
+            "speed": 0.8
+          }
+        }
+      }
+    }
+  }

@@ -1,0 +1,5 @@
+noise>=1.2.2
+numpy>=1.24.0
+scipy>=1.10.0
+pygame>=2.5.0
+pyinstaller>=6.3.0

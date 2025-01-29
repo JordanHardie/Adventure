@@ -1,0 +1,13 @@
+Error: rect argument is invalid
+Traceback (most recent call last):
+  File "C:\Users\xcool\Desktop\Python Projects\Adventure!\src\main.py", line 6, in main
+    game.run()
+  File "C:\Users\xcool\Desktop\Python Projects\Adventure!\src\engine\game_engine.py", line 41, in run
+    self.display_manager.render(
+  File "C:\Users\xcool\Desktop\Python Projects\Adventure!\src\engine\core\display_manager.py", line 84, in render
+    ui_manager.inventory_ui.render(player)
+  File "C:\Users\xcool\Desktop\Python Projects\Adventure!\src\UI\inventory_ui.py", line 241, in render
+    self.draw_stats(player)
+  File "C:\Users\xcool\Desktop\Python Projects\Adventure!\src\UI\inventory_ui.py", line 175, in draw_stats
+    pygame.draw.rect(self.screen, (200, 200, 0), (x, y, int(bar_width * sta_percent), bar_height))
+TypeError: rect argument is invalid

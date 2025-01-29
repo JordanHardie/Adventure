@@ -1,0 +1,46 @@
+{
+    "elements": [
+      "Fire", "Ice", "Storm", "Earth", "Wind", "Thunder", "Shadow", "Light", "Void", "Nature",
+      "Crystal", "Magma", "Frost", "Lightning", "Darkness", "Celestial", "Arcane", "Metal", "Spirit", "Time"
+    ],
+    "deities": [
+      "Yghs", "Kaeleth", "Moros", "Thyx", "Zephyr", "Nyth", "Velka", "Rhea", "Chronos", "Erebos",
+      "Helios", "Luna", "Gaia", "Atlas", "Nemesis", "Hecate", "Nyx", "Hyperion", "Selene", "Thanatos"
+    ],
+    "concepts": [
+      "Truth", "Chaos", "Order", "Time", "Space", "Death", "Life", "Dreams", "Hope", "Despair",
+      "Destiny", "Harmony", "Discord", "Eternity", "Infinity", "Balance", "Power", "Wisdom", "Justice", "Fortune"
+    ],
+    "locations": [
+      "Abyss", "Paradise", "Sanctuary", "Void", "Nexus", "Haven", "Citadel", "Labyrinth", "Observatory", "Catacombs",
+      "Spire", "Grove", "Temple", "Ruins", "Gateway", "Forge", "Gardens", "Throne", "Archive", "Crucible"
+    ],
+    "creatures": [
+      "Dragon", "Phoenix", "Hydra", "Chimera", "Leviathan", "Griffin", "Behemoth", "Wyrm", "Kraken", "Titan",
+      "Basilisk", "Sphinx", "Unicorn", "Manticore", "Cerberus", "Wyvern", "Pegasus", "Fenrir", "Serpent", "Djinn"
+    ],
+    "materials": [
+      "Adamant", "Mithril", "Orichalcum", "Stardust", "Moonstone", "Sunstone", "Dragonscale", "Soulstone", "Shadowsteel", "Celestite",
+      "Ethereum", "Voidstone", "Astralite", "Phoenix-feather", "Chronocrystal", "Dreamsilk", "Frostfire", "Thundergem", "Spiritwood", "Abyssal-iron"
+    ],
+    "conditions": [
+      "Dawn", "Dusk", "Twilight", "Eclipse", "Solstice", "Equinox", "Storm", "Night", "Day", "Midnight",
+      "Moonrise", "Sunrise", "Darkness", "Light", "Void", "Eternity", "Chaos", "Harmony", "Balance", "Discord"
+    ],
+    "emotions": [
+      "Rage", "Serenity", "Joy", "Sorrow", "Fear", "Courage", "Love", "Hate", "Hope", "Despair",
+      "Valor", "Pride", "Wrath", "Peace", "Passion", "Tranquility", "Fury", "Bliss", "Anguish", "Euphoria"
+    ],
+    "planes": [
+        "Celestial", "Infernal", "Ethereal", "Astral", "Material", "Elemental", "Shadow", "Dream", "Spirit", "Void",
+        "Fae", "Temporal", "Dimensional", "Chaos", "Order", "Liminal", "Primal", "Divine", "Mortal", "Cosmic"
+      ],
+      "seasons": [
+        "Spring", "Summer", "Autumn", "Winter", "Storm", "Drought", "Harvest", "Frost", "Growth", "Decay",
+        "Bloom", "Twilight", "Dawn", "Dusk", "Eclipse", "Solstice", "Equinox", "Monsoon", "Thaw", "Zenith"
+      ],
+      "aspects": [
+        "Creation", "Destruction", "Knowledge", "Ignorance", "Beginning", "Ending", "Motion", "Stillness", "Unity", "Division",
+        "Growth", "Decay", "Change", "Stasis", "Rebirth", "Death", "Memory", "Oblivion", "Reality", "Illusion"
+      ]
+  }

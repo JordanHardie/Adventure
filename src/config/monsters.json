@@ -1,0 +1,671 @@
+{
+    "monsters": {
+        "Slime": {
+            "biomes": [ "grassland", "forest", "swamp" ],
+            "rarity": {
+                "base_rate": 0.25,
+                "min_distance": 0
+            },
+            "stat_focus": {
+                "primary": [ "health", "defence" ],
+                "secondary": [ "strength" ],
+                "weak": [ "magic_power", "magic_defence", "speed" ]
+            },
+            "behavior": "defensive",
+            "actions": {
+                "ooze": {
+                    "type": "physical",
+                    "messages": [
+                        "{name} oozes menacingly!",
+                        "{name} slides towards {target}!",
+                        "{name} engulfs {target} in slime!"
+                    ],
+                    "weight": 70
+                },
+                "split": {
+                    "type": "heal",
+                    "messages": [
+                        "{name} splits and reforms!",
+                        "{name} regenerates some health!"
+                    ],
+                    "weight": 30
+                }
+            }
+        },
+        "Wolf": {
+            "biomes": [ "forest", "taiga", "grassland" ],
+            "rarity": {
+                "base_rate": 0.15,
+                "min_distance": 50
+            },
+            "stat_focus": {
+                "primary": [ "speed", "strength" ],
+                "secondary": [ "dexterity" ],
+                "weak": [ "magic_power", "magic_defence" ]
+            },
+            "behavior": "aggressive",
+            "actions": {
+                "bite": {
+                    "type": "physical",
+                    "messages": [
+                        "{name} lunges with sharp fangs!",
+                        "{name} bites ferociously!",
+                        "{name} snaps its jaws!"
+                    ],
+                    "weight": 60
+                },
+                "howl": {
+                    "type": "buff",
+                    "messages": [
+                        "{name} howls fiercely!",
+                        "{name}'s attack increases!"
+                    ],
+                    "weight": 40
+                }
+            }
+        },
+        "Ice Spirit": {
+            "biomes": [ "tundra", "snowy_peaks" ],
+            "rarity": {
+                "base_rate": 0.05,
+                "min_distance": 300
+            },
+            "stat_focus": {
+                "primary": [ "magic_power", "magic_defence" ],
+                "secondary": [ "wisdom", "intelligence" ],
+                "weak": [ "strength", "defence" ]
+            },
+            "behavior": "ranged",
+            "actions": {
+                "frost_bolt": {
+                    "type": "magic",
+                    "messages": [
+                        "{name} conjures a bolt of ice!",
+                        "{name} unleashes freezing magic!",
+                        "{name} launches an icy projectile!"
+                    ],
+                    "weight": 70
+                },
+                "ice_shield": {
+                    "type": "buff",
+                    "messages": [
+                        "{name} creates a shield of ice!",
+                        "{name} fortifies itself with frost!"
+                    ],
+                    "weight": 30
+                }
+            }
+        },
+        "Moss Golem": {
+            "biomes": [ "forest", "swamp" ],
+            "rarity": {
+                "base_rate": 0.1,
+                "min_distance": 100
+            },
+            "stat_focus": {
+                "primary": [ "strength", "defence" ],
+                "secondary": [ "health" ],
+                "weak": [ "speed", "dexterity" ]
+            },
+            "behavior": "defensive",
+            "actions": {
+                "smash": {
+                    "type": "physical",
+                    "messages": [
+                        "{name} swings its mossy fists!",
+                        "{name} brings down its heavy arms!",
+                        "{name} crushes with earthen strength!"
+                    ],
+                    "weight": 60
+                },
+                "regrow": {
+                    "type": "heal",
+                    "messages": [
+                        "{name}'s moss grows rapidly!",
+                        "{name} absorbs nutrients from the earth!"
+                    ],
+                    "weight": 40
+                }
+            }
+        },
+        "Fox Spirit": {
+            "biomes": [ "forest", "taiga" ],
+            "rarity": {
+                "base_rate": 0.08,
+                "min_distance": 200
+            },
+            "stat_focus": {
+                "primary": [ "magic_power", "speed" ],
+                "secondary": [ "intelligence", "dexterity" ],
+                "weak": [ "defence", "strength" ]
+            },
+            "behavior": "trickster",
+            "actions": {
+                "spirit_flame": {
+                    "type": "magic",
+                    "messages": [
+                        "{name} summons mystical flames!",
+                        "{name} weaves ghostly fire!",
+                        "{name} releases spirit energy!"
+                    ],
+                    "weight": 50
+                },
+                "confuse": {
+                    "type": "debuff",
+                    "messages": [
+                        "{name} creates illusory copies!",
+                        "{name} dances mysteriously!",
+                        "{name} manifests bewildering lights!"
+                    ],
+                    "weight": 50
+                }
+            }
+        },
+        "Frost Troll": {
+            "biomes": [ "tundra", "snowy_peaks", "mountain" ],
+            "rarity": {
+                "base_rate": 0.07,
+                "min_distance": 250
+            },
+            "stat_focus": {
+                "primary": [ "strength", "health" ],
+                "secondary": [ "defence" ],
+                "weak": [ "magic_power", "intelligence" ]
+            },
+            "behavior": "aggressive",
+            "actions": {
+                "ice_club": {
+                    "type": "physical",
+                    "messages": [
+                        "{name} swings its icy club!",
+                        "{name} brings down a frozen fist!",
+                        "{name} unleashes a mighty blow!"
+                    ],
+                    "weight": 70
+                },
+                "frost_roar": {
+                    "type": "debuff",
+                    "messages": [
+                        "{name} bellows with arctic fury!",
+                        "{name} releases a freezing roar!"
+                    ],
+                    "weight": 30
+                }
+            }
+        },
+        "Dragon": {
+            "biomes": [ "mountain", "volcanic", "snowy_peaks" ],
+            "rarity": {
+                "base_rate": 0.01,
+                "min_distance": 500
+            },
+            "stat_focus": {
+                "primary": [ "strength", "magic_power" ],
+                "secondary": [ "health", "defence" ],
+                "weak": [ "dexterity" ]
+            },
+            "behavior": "boss",
+            "actions": {
+                "dragon_breath": {
+                    "type": "magic",
+                    "messages": [
+                        "{name} unleashes devastating breath!",
+                        "{name} exhales pure destruction!",
+                        "{name} releases elemental fury!"
+                    ],
+                    "weight": 40
+                },
+                "claw_strike": {
+                    "type": "physical",
+                    "messages": [
+                        "{name} strikes with ancient claws!",
+                        "{name} rends with terrible talons!",
+                        "{name} tears through defenses!"
+                    ],
+                    "weight": 30
+                },
+                "wing_gust": {
+                    "type": "debuff",
+                    "messages": [
+                        "{name} creates a devastating windstorm!",
+                        "{name} beats its mighty wings!"
+                    ],
+                    "weight": 30
+                }
+            }
+        },
+        "Rock Golem": {
+            "biomes": [ "mountain", "volcanic" ],
+            "rarity": {
+                "base_rate": 0.05,
+                "min_distance": 300
+            },
+            "stat_focus": {
+                "primary": [ "defence", "health" ],
+                "secondary": [ "strength" ],
+                "weak": [ "speed", "dexterity" ]
+            },
+            "behavior": "defensive",
+            "actions": {
+                "boulder_throw": {
+                    "type": "physical",
+                    "messages": [
+                        "{name} hurls a massive boulder!",
+                        "{name} launches rocky projectiles!",
+                        "{name} throws chunks of stone!"
+                    ],
+                    "weight": 50
+                },
+                "harden": {
+                    "type": "buff",
+                    "messages": [
+                        "{name}'s stone skin hardens!",
+                        "{name} reinforces its rocky form!"
+                    ],
+                    "weight": 50
+                }
+            }
+        },
+        "Lava Serpent": {
+            "biomes": [ "volcanic" ],
+            "rarity": {
+                "base_rate": 0.03,
+                "min_distance": 400
+            },
+            "stat_focus": {
+                "primary": [ "magic_power", "speed" ],
+                "secondary": [ "dexterity" ],
+                "weak": [ "defence", "magic_defence" ]
+            },
+            "behavior": "ranged",
+            "actions": {
+                "magma_spit": {
+                    "type": "magic",
+                    "messages": [
+                        "{name} spits molten rock!",
+                        "{name} launches burning projectiles!",
+                        "{name} sprays liquid fire!"
+                    ],
+                    "weight": 60
+                },
+                "heat_wave": {
+                    "type": "debuff",
+                    "messages": [
+                        "{name} releases waves of intense heat!",
+                        "{name} creates a thermal updraft!"
+                    ],
+                    "weight": 40
+                }
+            }
+        },
+        "Sand Worm": {
+            "biomes": [ "desert", "savanna" ],
+            "rarity": {
+                "base_rate": 0.06,
+                "min_distance": 150
+            },
+            "stat_focus": {
+                "primary": [ "strength", "health" ],
+                "secondary": [ "defence" ],
+                "weak": [ "magic_power", "intelligence" ]
+            },
+            "behavior": "ambusher",
+            "actions": {
+                "burrow_strike": {
+                    "type": "physical",
+                    "messages": [
+                        "{name} erupts from beneath!",
+                        "{name} strikes from below!",
+                        "{name} emerges with crushing force!"
+                    ],
+                    "weight": 60
+                },
+                "sandstorm": {
+                    "type": "debuff",
+                    "messages": [
+                        "{name} creates a blinding sandstorm!",
+                        "{name} whips up abrasive winds!"
+                    ],
+                    "weight": 40
+                }
+            }
+        },
+        "Mirage Djinn": {
+            "biomes": [ "desert", "savanna" ],
+            "rarity": {
+                "base_rate": 0.04,
+                "min_distance": 250
+            },
+            "stat_focus": {
+                "primary": [ "magic_power", "intelligence" ],
+                "secondary": [ "magic_defence", "wisdom" ],
+                "weak": [ "strength", "defence" ]
+            },
+            "behavior": "trickster",
+            "actions": {
+                "desert_mirage": {
+                    "type": "magic",
+                    "messages": [
+                        "{name} weaves deadly illusions!",
+                        "{name} bends reality!",
+                        "{name} distorts perception!"
+                    ],
+                    "weight": 40
+                },
+                "sand_binding": {
+                    "type": "debuff",
+                    "messages": [
+                        "{name} creates quicksand!",
+                        "{name} binds with desert magic!"
+                    ],
+                    "weight": 30
+                },
+                "mirage_shift": {
+                    "type": "buff",
+                    "messages": [
+                        "{name} shifts through dimensions!",
+                        "{name} becomes one with the desert!"
+                    ],
+                    "weight": 30
+                }
+            }
+        },
+        "Swamp Witch": {
+            "biomes": [ "swamp" ],
+            "rarity": {
+                "base_rate": 0.07,
+                "min_distance": 200
+            },
+            "stat_focus": {
+                "primary": [ "magic_power", "wisdom" ],
+                "secondary": [ "intelligence" ],
+                "weak": [ "strength", "defence" ]
+            },
+            "behavior": "ranged",
+            "actions": {
+                "toxic_bolt": {
+                    "type": "magic",
+                    "messages": [
+                        "{name} hurls toxic magic!",
+                        "{name} casts a poisonous spell!",
+                        "{name} releases noxious energy!"
+                    ],
+                    "weight": 50
+                },
+                "curse": {
+                    "type": "debuff",
+                    "messages": [
+                        "{name} utters an ancient curse!",
+                        "{name} hexes with dark magic!"
+                    ],
+                    "weight": 50
+                }
+            }
+        },
+        "River Serpent": {
+            "biomes": [ "river" ],
+            "rarity": {
+                "base_rate": 0.09,
+                "min_distance": 100
+            },
+            "stat_focus": {
+                "primary": [ "speed", "dexterity" ],
+                "secondary": [ "strength" ],
+                "weak": [ "magic_power", "magic_defence" ]
+            },
+            "behavior": "ambusher",
+            "actions": {
+                "water_strike": {
+                    "type": "physical",
+                    "messages": [
+                        "{name} strikes from the depths!",
+                        "{name} coils around its prey!",
+                        "{name} emerges with lightning speed!"
+                    ],
+                    "weight": 70
+                },
+                "rapid_current": {
+                    "type": "debuff",
+                    "messages": [
+                        "{name} creates violent currents!",
+                        "{name} churns the waters!"
+                    ],
+                    "weight": 30
+                }
+            }
+        },
+        "Deep Sea Kraken": {
+            "biomes": [ "deep_ocean" ],
+            "rarity": {
+                "base_rate": 0.02,
+                "min_distance": 500
+            },
+            "stat_focus": {
+                "primary": [ "strength", "health" ],
+                "secondary": [ "defence" ],
+                "weak": [ "speed", "magic_defence" ]
+            },
+            "behavior": "boss",
+            "actions": {
+                "tentacle_crush": {
+                    "type": "physical",
+                    "messages": [
+                        "{name} crushes with mighty tentacles!",
+                        "{name} constricts with terrible force!",
+                        "{name} grasps with ancient might!"
+                    ],
+                    "weight": 40
+                },
+                "ink_cloud": {
+                    "type": "debuff",
+                    "messages": [
+                        "{name} releases a blinding cloud!",
+                        "{name} obscures vision with ink!"
+                    ],
+                    "weight": 30
+                },
+                "abyssal_pull": {
+                    "type": "special",
+                    "messages": [
+                        "{name} creates a devastating undertow!",
+                        "{name} summons the power of the depths!"
+                    ],
+                    "weight": 30
+                }
+            }
+        },
+        "Toxic Mist": {
+            "biomes": [ "rainforest" ],
+            "rarity": {
+                "base_rate": 0.06,
+                "min_distance": 250
+            },
+                "stat_focus": {
+                    "primary": [ "magic_power", "magic_defence" ],
+                    "secondary": [ "wisdom" ],
+                    "weak": [ "strength", "health" ]
+                },
+                "behavior": "ranged",
+                "actions": {
+                    "poison_cloud": {
+                        "type": "magic",
+                        "messages": [
+                            "{name} releases toxic vapors!",
+                            "{name} spreads noxious fumes!",
+                            "{name} engulfs the area in poison!"
+                        ],
+                        "weight": 60
+                    },
+                    "toxic_rain": {
+                        "type": "debuff",
+                        "messages": [
+                            "{name} condenses into acidic drops!",
+                            "{name} creates corrosive precipitation!"
+                        ],
+                        "weight": 40
+                    }
+                }
+            },
+            "Jungle Stalker": {
+                "biomes": [ "rainforest" ],
+                "rarity": {
+                    "base_rate": 0.08,
+                    "min_distance": 150
+                },
+                "stat_focus": {
+                    "primary": [ "dexterity", "speed" ],
+                    "secondary": [ "strength" ],
+                    "weak": [ "magic_power", "magic_defence" ]
+                },
+                "behavior": "ambusher",
+                "actions": {
+                    "pounce": {
+                        "type": "physical",
+                        "messages": [
+                            "{name} leaps from the shadows!",
+                            "{name} strikes with deadly precision!",
+                            "{name} ambushes its prey!"
+                        ],
+                        "weight": 70
+                    },
+                    "stalk": {
+                        "type": "buff",
+                        "messages": [
+                            "{name} becomes one with shadows!",
+                            "{name} prepares to strike!"
+                        ],
+                        "weight": 30
+                    }
+                }
+            },
+            "Water Sprite": {
+                "biomes": [ "river", "ocean" ],
+                "rarity": {
+                    "base_rate": 0.06,
+                    "min_distance": 200
+                },
+                "stat_focus": {
+                    "primary": [ "magic_power", "speed" ],
+                    "secondary": [ "wisdom" ],
+                    "weak": [ "strength", "defence" ]
+                },
+                "behavior": "trickster",
+                "actions": {
+                    "water_pulse": {
+                        "type": "magic",
+                        "messages": [
+                            "{name} releases a burst of water!",
+                            "{name} shapes liquid magic!",
+                            "{name} summons a watery blast!"
+                        ],
+                        "weight": 50
+                    },
+                    "mist_form": {
+                        "type": "buff",
+                        "messages": [
+                            "{name} dissolves into mist!",
+                            "{name} becomes one with water!"
+                        ],
+                        "weight": 50
+                    }
+                }
+            },
+            "Beach Crab": {
+                "biomes": [ "beach" ],
+                "rarity": {
+                    "base_rate": 0.15,
+                    "min_distance": 50
+                },
+                "stat_focus": {
+                    "primary": [ "defence", "strength" ],
+                    "secondary": [ "health" ],
+                    "weak": [ "magic_power", "speed" ]
+                },
+                "behavior": "defensive",
+                "actions": {
+                    "pincer_grip": {
+                        "type": "physical",
+                        "messages": [
+                            "{name} snaps with mighty claws!",
+                            "{name} grips with pincers!",
+                            "{name} catches its prey!"
+                        ],
+                        "weight": 60
+                    },
+                    "burrow": {
+                        "type": "buff",
+                        "messages": [
+                            "{name} burrows into the sand!",
+                            "{name} takes a defensive stance!"
+                        ],
+                        "weight": 40
+                    }
+                }
+            },
+            "Sea Siren": {
+                "biomes": [ "beach", "ocean" ],
+                "rarity": {
+                    "base_rate": 0.05,
+                    "min_distance": 300
+                },
+                "stat_focus": {
+                    "primary": [ "magic_power", "intelligence" ],
+                    "secondary": [ "wisdom" ],
+                    "weak": [ "strength", "defence" ]
+                },
+                "behavior": "trickster",
+                "actions": {
+                    "siren_song": {
+                        "type": "magic",
+                        "messages": [
+                            "{name} sings an enchanting melody!",
+                            "{name} weaves musical magic!",
+                            "{name} releases hypnotic tones!"
+                        ],
+                        "weight": 60
+                    },
+                    "tidal_pull": {
+                        "type": "debuff",
+                        "messages": [
+                            "{name} commands the tides!",
+                            "{name} creates a dangerous current!"
+                        ],
+                        "weight": 40
+                    }
+                }
+            },
+            "Kelp Guardian": {
+                "biomes": [ "ocean", "deep_ocean" ],
+                "rarity": {
+                    "base_rate": 0.04,
+                    "min_distance": 400
+                },
+                "stat_focus": {
+                    "primary": [ "defence", "magic_defence" ],
+                    "secondary": [ "health" ],
+                    "weak": [ "speed", "dexterity" ]
+                },
+                "behavior": "defensive",
+                "actions": {
+                    "kelp_ensnare": {
+                        "type": "physical",
+                        "messages": [
+                            "{name} entangles with seaweed!",
+                            "{name} constricts with kelp tendrils!",
+                            "{name} binds with aquatic plants!"
+                        ],
+                        "weight": 50
+                    },
+                    "ocean_shield": {
+                        "type": "buff",
+                        "messages": [
+                            "{name} creates a barrier of kelp!",
+                            "{name} fortifies with ocean magic!"
+                        ],
+                        "weight": 50
+                    }
+                }
+            }
+        }
+    }
+    

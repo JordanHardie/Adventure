@@ -1,0 +1,299 @@
+{
+    "weapons": {
+        "dagger": {
+            "base_stats": {
+                "strength": 1,
+                "dexterity": 2,
+                "speed": 1
+            },
+            "slot": "WEAPON"
+        },
+        "sword": {
+            "base_stats": {
+                "strength": 3,
+                "defence": 1
+            },
+            "slot": "WEAPON"
+        },
+        "axe": {
+            "base_stats": {
+                "strength": 4
+            },
+            "slot": "WEAPON"
+        },
+        "spear": {
+            "base_stats": {
+                "strength": 2,
+                "dexterity": 2
+            },
+            "slot": "WEAPON"
+        },
+        "staff": {
+            "base_stats": {
+                "magic_power": 3,
+                "wisdom": 1
+            },
+            "slot": "WEAPON"
+        },
+        "bow": {
+            "base_stats": {
+                "dexterity": 3,
+                "speed": 2
+            },
+            "slot": "WEAPON"
+        },
+        "hammer": {
+            "base_stats": {
+                "strength": 5,
+                "defence": 2
+            },
+            "slot": "WEAPON"
+        },
+        "chakram": {
+            "base_stats": {
+                "dexterity": 4,
+                "speed": 3
+            },
+            "slot": "WEAPON"
+        }
+    },
+    "armor": {
+        "cloth": {
+            "hood": {
+                "base_stats": {
+                    "magic_defence": 2,
+                    "wisdom": 1
+                },
+                "slot": "HELMET"
+            },
+            "robe": {
+                "base_stats": {
+                    "magic_defence": 3,
+                    "intelligence": 1
+                },
+                "slot": "TORSO"
+            },
+            "cuffs": {
+                "base_stats": {
+                    "magic_defence": 1,
+                    "magic_power": 1
+                },
+                "slot": "BRACERS"
+            },
+            "gloves": {
+                "base_stats": {
+                    "magic_power": 1,
+                    "dexterity": 1
+                },
+                "slot": "GLOVES"
+            },
+            "pants": {
+                "base_stats": {
+                    "magic_defence": 2,
+                    "speed": 1
+                },
+                "slot": "LEGS"
+            },
+            "shoes": {
+                "base_stats": {
+                    "speed": 2,
+                    "magic_defence": 1
+                },
+                "slot": "FEET"
+            }
+        },
+        "leather": {
+            "cap": {
+                "base_stats": {
+                    "defence": 2,
+                    "dexterity": 1
+                },
+                "slot": "HELMET"
+            },
+            "vest": {
+                "base_stats": {
+                    "defence": 3,
+                    "speed": 1
+                },
+                "slot": "TORSO"
+            },
+            "bracers": {
+                "base_stats": {
+                    "defence": 2,
+                    "dexterity": 1
+                },
+                "slot": "BRACERS"
+            },
+            "gloves": {
+                "base_stats": {
+                    "defence": 1,
+                    "dexterity": 2
+                },
+                "slot": "GLOVES"
+            },
+            "pants": {
+                "base_stats": {
+                    "defence": 2,
+                    "speed": 1
+                },
+                "slot": "LEGS"
+            },
+            "boots": {
+                "base_stats": {
+                    "speed": 2,
+                    "dexterity": 1
+                },
+                "slot": "FEET"
+            }
+        },
+        "plate": {
+            "helmet": {
+                "base_stats": {
+                    "defence": 3,
+                    "strength": 1
+                },
+                "slot": "HELMET"
+            },
+            "armor": {
+                "base_stats": {
+                    "defence": 5,
+                    "strength": 1
+                },
+                "slot": "TORSO"
+            },
+            "bracers": {
+                "base_stats": {
+                    "defence": 3
+                },
+                "slot": "BRACERS"
+            },
+            "gauntlets": {
+                "base_stats": {
+                    "defence": 2,
+                    "strength": 1
+                },
+                "slot": "GLOVES"
+            },
+            "greaves": {
+                "base_stats": {
+                    "defence": 4,
+                    "stamina": 1
+                },
+                "slot": "LEGS"
+            },
+            "sabatons": {
+                "base_stats": {
+                    "defence": 3
+                },
+                "slot": "FEET"
+            }
+        },
+        "elemental": {
+            "phoenix_hood": {
+                "base_stats": {
+                    "magic_defence": 3,
+                    "magic_power": 2
+                },
+                "slot": "HELMET"
+            },
+            "frost_vest": {
+                "base_stats": {
+                    "magic_defence": 4,
+                    "intelligence": 2
+                },
+                "slot": "TORSO"
+            },
+            "storm_bracers": {
+                "base_stats": {
+                    "magic_defence": 2,
+                    "speed": 2
+                },
+                "slot": "BRACERS"
+            }
+        }
+    },
+    "rings": {
+        "power": {
+            "base_stats": {
+                "strength": 2,
+                "magic_power": 2
+            },
+            "slot": "RING"
+        },
+        "defense": {
+            "base_stats": {
+                "defence": 2,
+                "magic_defence": 2
+            },
+            "slot": "RING"
+        },
+        "swiftness": {
+            "base_stats": {
+                "speed": 2,
+                "dexterity": 2
+            },
+            "slot": "RING"
+        },
+        "wisdom": {
+            "base_stats": {
+                "wisdom": 2,
+                "intelligence": 2
+            },
+            "slot": "RING"
+        },
+        "vitality": {
+            "base_stats": {
+                "health": 10,
+                "stamina": 5
+            },
+            "slot": "RING"
+        },
+        "elemental": {
+            "fire_ring": {
+                "base_stats": {
+                    "magic_power": 3
+                },
+                "slot": "RING"
+            },
+            "frost_ring": {
+                "base_stats": {
+                    "magic_defence": 3
+                },
+                "slot": "RING"
+            }
+        },
+        "legendary": {
+            "dragonheart": {
+                "base_stats": {
+                    "strength": 4,
+                    "magic_power": 4,
+                    "health": 20
+                },
+                "slot": "RING"
+            }
+        }
+    },
+    "amulets": {
+        "protection": {
+            "base_stats": {
+                "defence": 2,
+                "magic_defence": 2
+            },
+            "slot": "AMULET"
+        },
+        "power": {
+            "base_stats": {
+                "strength": 3,
+                "magic_power": 2
+            },
+            "slot": "AMULET"
+        },
+        "wisdom": {
+            "base_stats": {
+                "intelligence": 3,
+                "wisdom": 2
+            },
+            "slot": "AMULET"
+        }
+    }
+}
